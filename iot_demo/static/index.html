@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JDE IoT Fleet Demo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="shell">
+  <header>
+    <p class="eyebrow">JD Edwards Orchestrator + IoT (demo)</p>
+    <h1>Drag the truck. Equipment <span id="equipmentNumber">30</span> meters update through the Orchestrator.</h1>
+    <p id="mockBadge" class="badge hidden">Running against the built-in mock server, synthetic data only</p>
+  </header>
+  <section class="stats">
+    <div><span>Fuel meter</span><strong id="fuelReading">3.00</strong></div>
+    <div><span>Hour meter</span><strong id="hourReading">3.00</strong></div>
+    <div><span>Total distance</span><strong id="distanceTotal">0.00 km</strong></div>
+    <div><span>Status</span><strong id="syncStatus">Loading</strong></div>
+  </section>
+  <section class="grid">
+    <div class="panel">
+      <div class="panel-head"><b>Yard map (synthetic, 1 grid cell = 1 km)</b><button id="resetRouteButton">Reset route</button></div>
+      <svg id="map" viewBox="0 0 800 460" role="img" aria-label="Draggable truck on a grid map"></svg>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><b>Orchestrator log</b><button id="clearLogButton">Clear</button></div>
+      <div id="eventLog"></div>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
