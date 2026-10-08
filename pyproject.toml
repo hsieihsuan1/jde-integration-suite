@@ -1,0 +1,10 @@
+[project]
+name = "jde-integration-suite"
+version = "0.1.0"
+description = "Small demos that expose JD Edwards Orchestrator endpoints through a map UI and a stock query bot, with a mock server for offline use."
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[tool.setuptools]
+packages = ["jde_suite", "iot_demo", "stock_bot"]
