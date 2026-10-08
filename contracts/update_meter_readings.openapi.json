@@ -1,0 +1,72 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "JDE_ORCH_Sample_UpdateMeterReadings",
+    "version": "1.0.0",
+    "description": "Trimmed, hand-written contract matching what this repo sends and reads. Not an export from a live system."
+  },
+  "servers": [
+    {
+      "url": "https://your-jde-host.example.com/jderest/v3/orchestrator"
+    }
+  ],
+  "paths": {
+    "/JDE_ORCH_Sample_UpdateMeterReadings": {
+      "post": {
+        "summary": "Update fuel and hour meter readings",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "jde-AIS-Auth-Device",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "EquipmentNumber": {
+                    "type": "string"
+                  },
+                  "NewFuelMeterReading": {
+                    "type": "number"
+                  },
+                  "NewHourMeterReading": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful execution",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jde__status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization failure"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  }
+}
