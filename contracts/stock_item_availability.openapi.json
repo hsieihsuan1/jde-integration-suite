@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Stock_Item_Availability",
+    "version": "1.0.0",
+    "description": "Trimmed, hand-written contract matching what this repo sends and reads. Not an export from a live system."
+  },
+  "servers": [
+    {
+      "url": "https://your-jde-host.example.com/jderest/v3/orchestrator"
+    }
+  ],
+  "paths": {
+    "/Stock_Item_Availability": {
+      "post": {
+        "summary": "Item availability by branch/plant",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "jde-AIS-Auth-Device",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Business Unit": {
+                    "type": "string"
+                  },
+                  "2nd Item Number": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful execution",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jde__status": {
+                      "type": "string"
+                    },
+                    "ServiceRequest1": {
+                      "type": "object",
+                      "description": "Contains fs_DATABROWSE_V4101E.data.gridData.rowset[] with F41021_* quantity columns"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization failure"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  }
+}
